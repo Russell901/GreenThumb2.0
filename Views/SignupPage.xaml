@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenThumb2._0.Views.SignupPage"
+             Title="SignupPage">
+    <ScrollView>
+        <VerticalStackLayout 
+        Spacing="20" 
+        Padding="30" 
+        VerticalOptions="Center">
+
+            <!-- Logo or App Title (Optional) -->
+            <Label 
+            Text="Green Thumb" 
+            FontSize="32" 
+            HorizontalOptions="Center"
+            FontAttributes="Bold"
+            TextColor="{DynamicResource Primary}"/>
+
+            <!--Usernam Entry-->
+            <Border 
+             Stroke="{DynamicResource Primary}"
+             StrokeThickness="1"
+             Padding="10">
+                <Entry 
+                  x:Name="UsernameEntry"
+                  Placeholder="Username"
+                  Text= "{ Binding Username }"
+                />
+            </Border>
+
+            <!-- Email Entry -->
+            <Border 
+            Stroke="{DynamicResource Primary}"
+            StrokeThickness="1"
+            Padding="10">
+                <Entry 
+                x:Name="EmailEntry"
+                Placeholder="Email Address"
+                Keyboard="Email"
+                Text= "{ Binding Email }"
+                />
+            </Border>
+
+            <!-- Password Entry -->
+            <Border 
+            Stroke="{DynamicResource Primary}"
+            StrokeThickness="1"
+            Padding="10">
+                <Entry 
+                x:Name="PasswordEntry"
+                Placeholder="Password"
+                IsPassword="True"
+                Text="{Binding Password}"/>
+            </Border>
+
+            <Label 
+             Text="{Binding ErrorMessage}"
+             TextColor="Red"
+             IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"
+             HorizontalOptions="Center"/>
+
+            <ActivityIndicator 
+             IsRunning="{Binding IsLoading}"
+             IsVisible="{Binding IsLoading}"
+             Color="{StaticResource Primary}"/>
+
+            <!-- SignUp Button -->
+            <Button 
+            Text="Sign Up" 
+            BackgroundColor="{DynamicResource Primary}"
+            TextColor="White"
+            FontSize="18"
+            Command="{Binding SignUpCommand}"
+            IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+            CornerRadius="10"
+            HeightRequest="50"/>
+
+            <!-- To Login -->
+            <Button 
+            Text="Log in" 
+            BackgroundColor= "White"
+            TextColor="{DynamicResource Primary}"
+            FontSize="18"
+            Command="{Binding NavigateAuthCommand}"
+            IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+            CornerRadius="10"
+            HeightRequest="50"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

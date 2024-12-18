@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GreenThumb2._0.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GreenThumb2._0.Views"
+    FlyoutBehavior="Disabled"
+    Title="GreenThumb2._0">
+
+    <!-- Pages not in Flyout Menu -->
+    <ShellContent
+        Title="On Boarding"
+        ContentTemplate="{DataTemplate local:OnboardingPage}"
+        Route="MainPage" 
+        FlyoutItemIsVisible="False"
+        Shell.NavBarIsVisible="False"/>
+
+    <ShellContent
+        Title="Authentication"
+        Route="AuthPage"
+        ContentTemplate="{DataTemplate local:AuthenticationPage}"
+        FlyoutItemIsVisible="False"
+        Shell.NavBarIsVisible="False" />
+
+    <ShellContent
+        Title="Sign Up"
+        Route="SignUp"
+        ContentTemplate="{DataTemplate local:SignupPage}"
+        FlyoutItemIsVisible="False"
+        Shell.NavBarIsVisible="False" />
+    
+    <!--My Menu Bar-->
+   
+
+    
+
+    <!-- These appear on the Menu-->
+    <FlyoutItem Title="Home">
+        <ShellContent
+            Title="Home"
+            Route="HomePage"
+            ContentTemplate="{DataTemplate local:HomePage}"/>
+    </FlyoutItem>
+    <Shell.FlyoutHeader>
+        <Grid             
+            Padding="10"
+            RowDefinitions="Auto,Auto,Auto">
+            <Image 
+                Grid.Row="0"
+                Source="logo.png" 
+                HeightRequest="100" 
+                WidthRequest="100"
+                HorizontalOptions="Start"/>
+
+            <Label 
+                Grid.Row="1"
+                x:Name="UserNameLabel"
+                Text="{Binding CurrentUsername}"
+                TextColor="White"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Margin="0,10,0,0"/>
+
+        </Grid>
+    </Shell.FlyoutHeader>
+    <Shell.FlyoutFooter>
+        <Grid>
+            <Button 
+                Text="Logout" 
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                Margin="20"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+</Shell>
